@@ -97,5 +97,6 @@ a {
         max-width: 90%;
         margin: inherit 1rem;
         padding: 1.2rem;
+        font-size: 14px;
     }
 }
