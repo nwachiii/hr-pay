@@ -77,13 +77,25 @@ h2 {
     font-weight: 400;
 }
 
+input {
+    height: 44px;
+    border-radius: 12px !important;
+}
+
+input::placeholder {
+  color: #a49c9c !important;
+  font-size: 12px;
+}
+
+
 a {
  color: #2271b6;  
 }
 
 
 @media screen and (max-width: 500px) {
-    .container {
+   .container {
+        max-width: 90%;
         margin: inherit 1rem;
         padding: 1.2rem;
     }
