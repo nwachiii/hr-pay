@@ -1,12 +1,33 @@
+@font-face {
+    font-family: 'Avenir';
+    src: url('../fonts/Avenir-Regular.woff2') format('woff2');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Avenir';
+    src: url('../fonts/Avenir-Bold.woff2') format('woff2');
+    font-weight: 700;
+}
+
 body {
     background: linear-gradient(to right, #ECECEC, #FFFFFF);
     height: 100vh;
     margin: 0;
-    font-family: 'Poppins', sans-serif;
+   font-family: Verdana, Geneva, Tahoma, sans-serif;
+    /* font-family: 'Avenir', sans-serif; */
+    font-weight: 400;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+body.fade-in {
+    opacity: 1;
 }
 
 .navbar {
     width: 100%;
+    
 }
 
 .container {
@@ -16,25 +37,32 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 400px;
     width: 100%;
-    margin-top: 10rem;
+    margin-top: 5rem;
 }
 
 h2 {
-    font-family: 'Lora', serif;
     font-weight: 700;
     margin-bottom: 1.5rem;
+    color: #2271b6;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 .btn-gradient {
-    background: linear-gradient(to right, #6a11cb, #2575fc);
+    background: linear-gradient(to bottom right, #2271b6, #2271b67a);
     color: white;
     border: none;
     height: 44px;
     margin: 15px auto;
+    font-weight: 500;
+    transition: background 0.s ease-in-out;
+    
 }
 
 .btn-gradient:hover {
-    background: linear-gradient(to right, #2575fc, #6a11cb);
+      background: linear-gradient(to bottom right, #2271b6, #2271b6);
+    color: white;
+     transition: all 200ms ease-in-out;
+    
 }
 
 .form-control:invalid {
@@ -46,9 +74,14 @@ h2 {
 }
 
 #loginMessage {
-    font-family: 'Lora', serif;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: 400;
 }
+
+a {
+ color: #2271b6;  
+}
+
 
 @media screen and (max-width: 500px) {
     .container {
