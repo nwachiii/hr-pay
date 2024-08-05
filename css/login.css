@@ -14,8 +14,8 @@ body {
     background: linear-gradient(to right, #ECECEC, #FFFFFF);
     height: 100vh;
     margin: 0;
-   font-family: Verdana, Geneva, Tahoma, sans-serif;
-    /* font-family: 'Avenir', sans-serif; */
+   /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+    font-family: 'Avenir', sans-serif;
     font-weight: 400;
     opacity: 0;
     transition: opacity 0.5s ease-in-out;
@@ -44,11 +44,11 @@ h2 {
     font-weight: 700;
     margin-bottom: 1.5rem;
     color: #2271b6;
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Avenir', sans-serif;
 }
 
 .btn-gradient {
-    background: linear-gradient(to bottom right, #2271b6, #2271b67a);
+    background: #2271b6;
     color: white;
     border: none;
     height: 44px;
@@ -58,11 +58,9 @@ h2 {
     
 }
 
+
 .btn-gradient:hover {
-      background: linear-gradient(to bottom right, #2271b6, #2271b6);
     color: white;
-     transition: all 200ms ease-in-out;
-    
 }
 
 .form-control:invalid {
@@ -74,7 +72,7 @@ h2 {
 }
 
 #loginMessage {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Avenir', sans-serif;
     font-weight: 400;
 }
 input {
@@ -89,6 +87,10 @@ input::placeholder {
 
 a {
  color: #2271b6;  
+}
+
+.forgot_pwrd_text {
+    font-size: 13px;
 }
 
 
