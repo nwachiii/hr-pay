@@ -4,7 +4,8 @@ $(document).ready(function () {
 		if (this.checkValidity() === false) {
 			event.stopPropagation();
 		} else {
-			const name = $('#signupName').val();
+			const firstName = $('#firstName').val();
+			const lastName = $('#lastName').val();
 			const email = $('#signupEmail').val();
 			const phone = $('#phoneNumber').val();
 			const countryCode = $('#countryCode').val();
@@ -16,6 +17,10 @@ $(document).ready(function () {
 			const zipcode = $('#zipcode').val();
 			const country = $('#country').val();
 			const role = $('#role').val();
+			const cardNumber = $('#cardNumber').val();
+			const cardName = $('#cardName').val();
+			const expiryDate = $('#expiryDate').val();
+			const cvv = $('#cvv').val();
 
 			if (!validateEmail(email)) {
 				$('#signupEmail').addClass('is-invalid');
@@ -32,7 +37,6 @@ $(document).ready(function () {
 			}
 
 			const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
-			const namePattern = /^[a-zA-Z\s]+$/;
 
 			if (!passwordPattern.test(password)) {
 				$('#signupPassword').addClass('is-invalid');
@@ -50,20 +54,14 @@ $(document).ready(function () {
 				$('#confirmPassword')[0].setCustomValidity('');
 			}
 
-			if (!namePattern.test(name)) {
-				$('#signupName').addClass('is-invalid');
-				return;
-			} else {
-				$('#signupName').removeClass('is-invalid').addClass('is-valid');
-			}
-
-			console.log(name, email, countryCode + phone, password, companyName, companyAddress, state, zipcode, country, role);
+			console.log(firstName, lastName, email, countryCode + phone, password, companyName, companyAddress, state, zipcode, country, role, cardNumber, cardName, expiryDate, cvv);
 
 			$.ajax({
 				url: '/backend/signup', // Replace with your backend sign-up endpoint
 				type: 'POST',
 				data: {
-					name,
+					firstName,
+					lastName,
 					email,
 					phone: countryCode + phone,
 					password,
@@ -73,6 +71,10 @@ $(document).ready(function () {
 					zipcode,
 					country,
 					role,
+					cardNumber,
+					cardName,
+					expiryDate,
+					cvv,
 				},
 				success: function (response) {
 					$('#signupMessage').text(response.message).removeClass('text-danger').addClass('text-success');
@@ -86,16 +88,16 @@ $(document).ready(function () {
 	});
 
 	$('#nextBtn').click(function () {
-		if ($('#signupName').val() === '' || $('#signupEmail').val() === '' || $('#signupPassword').val() === '' || $('#confirmPassword').val() === '' || $('#phoneNumber').val() === '' || $('#signupPassword').val() !== $('#confirmPassword').val()) {
+		if ($('#firstName').val() === '' || $('#lastName').val() === '' || $('#signupEmail').val() === '' || $('#signupPassword').val() === '' || $('#confirmPassword').val() === '' || $('#signupPassword').val() !== $('#confirmPassword').val()) {
 			$('#signupForm')[0].reportValidity();
 		} else {
 			$('#userInfo').hide();
-			$('#companyInfo').show();
+			$('#paymentInfo').show();
 		}
 	});
 
 	$('#prevBtn').click(function () {
-		$('#companyInfo').hide();
+		$('#paymentInfo').hide();
 		$('#userInfo').show();
 	});
 

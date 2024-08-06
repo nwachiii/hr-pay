@@ -10,17 +10,17 @@
     font-weight: 700;
 }
 
-
-
 body {
     background: linear-gradient(to right, #ECECEC, #FFFFFF);
-    min-height: 100vh;
+    height: 100vh;
     margin: 0;
     font-weight: 400;
-   font-family: 'Avenir', sans-serif;
-    /* font-family: 'Avenir', sans-serif; */
+    font-family: 'Avenir', sans-serif;
     opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+     display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease-in-out;
 }
 
 .navbar {
@@ -32,20 +32,29 @@ body.fade-in {
 }
 
 .container {
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    max-width: 500px;
     width: 100%;
+    padding: 2rem 1.5rem 1rem;
+    max-width: fit-content;
+    min-width: 500px;
     margin-top: 3rem;
+    border-radius: 8px;
+    background: white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.nav_area {
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
 }
 
 h2 {
     font-weight: 700;
     margin-bottom: 1.5rem;
     color: #2271b6;
-    font-family: 'Avenir', sans-serif;
+    font-size: 24px;
+    margin: 14px auto;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 .btn-gradient {
@@ -55,10 +64,9 @@ h2 {
     height: 44px;
     margin: 15px auto;
     font-weight: 500;
+    max-width: 70%;
     transition: all 0.5s ease-in-out;
-    
 }
-
 
 .btn-gradient:hover {
     color: white;
@@ -73,7 +81,7 @@ h2 {
 }
 
 #signupMessage {
-   font-family: 'Avenir', sans-serif;
+    font-family: 'Avenir', sans-serif;
     font-weight: 400;
 }
 
@@ -83,41 +91,39 @@ input {
 }
 
 input::placeholder {
-  color: #a49c9c !important;
-  font-size: 12px;
+    color: #a49c9c !important;
+    font-size: 12px;
 }
 
 a {
- color: #2271b6;  
+    color: #2271b6;
 }
 
-#companyInfo {
+#userInfo {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 5px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
 }
 
-/* #companyInfo .mb-3 {
-    grid-column: span 2;
-}
-
-#companyInfo .btn {
-    grid-column: span 2;
-} */
-
-#companyInfo .btn {
-    grid-column: span 2;
+#paymentInfo {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-top: 3em;
 }
 
 label {
     font-size: 14px;
 }
 
-
-
-
 #prevBtn {
-    margin-top: 10px;
+    margin-top: 1.5rem ;
+    /* grid-column: span 2; */
+    /* width: 70%; */
+}
+
+#nextBtn {
+    grid-column: span 2;
 }
 
 #signupMessage {
@@ -130,17 +136,10 @@ input {
     border-radius: 12px !important;
     outline: none !important;
 }
-input:focus, input:active {
+
+input:focus,
+input:active {
     outline: none !important;
-}
-
-input::placeholder {
-    color: #a49c9c !important;
-    font-size: 12px;
-}
-
-a {
-    color: #2271b6;
 }
 
 .input-group .form-control,
@@ -154,16 +153,39 @@ a {
 }
 
 @media screen and (max-width: 768px) {
-    #companyInfo {
-        grid-template-columns: 1fr;
+    body {
+    height: auto;
+}
+ .container {
+        max-width: 90%;
+        min-width: 70%;
+        margin: 1rem auto;
+        padding: 1.2rem;
+        font-size: 14px;
+            margin-bottom: unset;
+
     }
+    #userInfo,
+    #paymentInfo {
+        display: block;
+    }
+    label {
+        margin-bottom: 1em;
+    }
+    .btn-gradient {
+    margin: 15px auto;
+    max-width: 100%;
+}
 }
 
-@media screen and (max-width: 500px) {
-   .container {
+/* @media screen and (max-width: 500px) {
+    .container {
         max-width: 90%;
+        min-width: 70%;
         margin: inherit 1rem;
         padding: 1.2rem;
         font-size: 14px;
+            margin-bottom: unset;
+
     }
-}
+} */

@@ -14,11 +14,13 @@ body {
     background: linear-gradient(to right, #ECECEC, #FFFFFF);
     height: 100vh;
     margin: 0;
-   /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
-    font-family: 'Avenir', sans-serif;
-    font-weight: 400;
     opacity: 0;
-    transition: opacity 0.5s ease-in-out;
+    font-weight: 400;
+    font-family: 'Avenir', sans-serif;
+    transition: opacity 0.3s ease-in;
+     display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 body.fade-in {
@@ -37,14 +39,22 @@ body.fade-in {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     max-width: 400px;
     width: 100%;
-    margin-top: 5rem;
+    margin-bottom: 5rem;
+}
+
+.nav_area {
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
 }
 
 h2 {
     font-weight: 700;
     margin-bottom: 1.5rem;
     color: #2271b6;
-    font-family: 'Avenir', sans-serif;
+    font-size: 24px;
+    margin: 14px auto;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 .btn-gradient {
@@ -100,5 +110,6 @@ a {
         margin: inherit 1rem;
         padding: 1.2rem;
         font-size: 14px;
+        margin-bottom: unset;
     }
 }
