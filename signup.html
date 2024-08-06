@@ -52,7 +52,7 @@
                     <label for="phoneNumber" class="form-label">Phone Number</label>
                     <div class="input-group position-relative">
                         <span class="input-group-text" id="basic-addon1" id="countryCode">+234</span>
-                        <input type="number" inputmode="numeric" placeholder="Phone number" pattern="/^\d{9}$/" class="form-control" id="phoneNumber">
+                        <input type="number" inputmode="numeric" placeholder="Phone number" class="form-control" id="phoneNumber">
                         <div class="invalid-feedback">
                             Please enter a valid phone number with exactly 10 digits
                         </div>
@@ -129,7 +129,7 @@
                 <!-- <div class="mb-3 d-flex gap-4"> -->
                     <div class="grid-item">
                         <label for="cardNumber" class="form-label">Card Number <span class="text-danger">*</span></label>
-                        <input type="text" placeholder="Card number" class="form-control" id="cardNumber" required>
+                        <input type="number" placeholder="Card number" class="form-control" id="cardNumber" required>
                         <div class="invalid-feedback">
                             Please enter your card number
                         </div>
@@ -145,20 +145,20 @@
                 <!-- <div class="mb-3 d-flex gap-4"> -->
                     <div class="grid-item">
                         <label for="expiryDate" class="form-label">Expiry Date <span class="text-danger">*</span></label>
-                        <input type="text" placeholder="MM/YY" class="form-control" id="expiryDate" required>
+                        <input type="month" placeholder="Month - YYYY" class="form-control" id="expiryDate" required>
                         <div class="invalid-feedback">
                             Please enter the expiry date
                         </div>
                     </div>
                     <div class="grid-item">
                         <label for="cvv" class="form-label">CVV <span class="text-danger">*</span></label>
-                        <input type="text" placeholder="CVV" class="form-control" id="cvv" required>
+                        <input type="number"  placeholder="CVV" class="form-control" id="cvv" max="999" required>
                         <div class="invalid-feedback">
                             Please enter the CVV
                         </div>
                     </div>
                 <!-- <button type="button" id="prevBtn" class="btn btn-secondary text-center">Previous</button> -->
-                <button type="submit" class="btn btn-gradient w-100 text-center">Sign Up</button>
+                <button id="submitBtn" type="submit" class="btn btn-gradient">Sign Up</button>
             </div>
         </form>
         <div id="signupMessage" class="mt-3"></div>

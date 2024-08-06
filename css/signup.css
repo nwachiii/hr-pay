@@ -35,7 +35,7 @@ body.fade-in {
     width: 100%;
     padding: 2rem 1.5rem 1rem;
     max-width: fit-content;
-    min-width: 500px;
+    min-width: 65%;
     margin-top: 3rem;
     border-radius: 8px;
     background: white;
@@ -62,9 +62,11 @@ h2 {
     color: white;
     border: none;
     height: 44px;
-    margin: 15px auto;
+    margin: 35px auto 15px;
     font-weight: 500;
     max-width: 70%;
+    width: 100%;
+    text-align: center;
     transition: all 0.5s ease-in-out;
 }
 
@@ -107,7 +109,7 @@ a {
 
 #paymentInfo {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 10px;
     margin-top: 3em;
 }
@@ -122,7 +124,7 @@ label {
     /* width: 70%; */
 }
 
-#nextBtn {
+#nextBtn, #submitBtn {
     grid-column: span 2;
 }
 
@@ -152,17 +154,29 @@ input:active {
     border-bottom-left-radius: 0;
 }
 
+     /* Remove spinners in Chrome, Safari, Edge, Opera */
+        input[type="number"]::-webkit-outer-spin-button,
+        input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Remove spinners in Firefox */
+        input[type="number"] {
+            -moz-appearance: textfield;
+        }
+
 @media screen and (max-width: 768px) {
     body {
     height: auto;
 }
  .container {
-        max-width: 90%;
+        max-width: 95%;
         min-width: 70%;
         margin: 1rem auto;
         padding: 1.2rem;
         font-size: 14px;
-            margin-bottom: unset;
+        margin-bottom: unset;
 
     }
     #userInfo,
@@ -170,7 +184,7 @@ input:active {
         display: block;
     }
     label {
-        margin-bottom: 1em;
+        margin-top: 1.3em;
     }
     .btn-gradient {
     margin: 15px auto;

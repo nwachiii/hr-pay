@@ -121,8 +121,20 @@ $(document).ready(function () {
 		return emailPattern.test(email);
 	}
 
-	function validatePhone(phone) {
-		const phonePattern = /^\d{10}$/;
-		return phonePattern.test(phone);
-	}
+	// phone number validation
+	  const phoneInput = document.getElementById('phoneNumber');
+		phoneInput.addEventListener('input', function () {
+			if (this.value.length > 10) {
+				this.value = this.value.slice(0, 10);
+			}
+		});
+
+
+	// CVV format
+	  const cvvInput = document.getElementById('cvv');
+		cvvInput.addEventListener('input', function () {
+			if (this.value.length > 3) {
+				this.value = this.value.slice(0, 3);
+			}
+		});
 });
