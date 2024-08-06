@@ -87,11 +87,6 @@ h2 {
     font-weight: 400;
 }
 
-input {
-    height: 44px;
-    border-radius: 12px !important;
-}
-
 input::placeholder {
     color: #a49c9c !important;
     font-size: 12px;
@@ -189,7 +184,7 @@ input:focus, select:focus, textarea:focus, button:focus {
 .checkbox-label {
     display: flex;
     align-items: center;
-     cursor: pointer;
+     /* cursor: pointer; */
 }
 .checkbox-label input {
     margin-right: 10px;
