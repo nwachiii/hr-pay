@@ -87,19 +87,11 @@ $(document).ready(function () {
 		$(this).addClass('was-validated');
 	});
 
-	$('#nextBtn').click(function () {
-		if ($('#firstName').val() === '' || $('#lastName').val() === '' || $('#signupEmail').val() === '' || $('#signupPassword').val() === '' || $('#confirmPassword').val() === '' || $('#signupPassword').val() !== $('#confirmPassword').val()) {
-			$('#signupForm')[0].reportValidity();
-		} else {
-			$('#userInfo').hide();
-			$('#paymentInfo').show();
-		}
-	});
-
-	$('#prevBtn').click(function () {
-		$('#paymentInfo').hide();
-		$('#userInfo').show();
-	});
+	const phoneNumberInput = document.getElementById('phoneNumber');
+	const countryCodeSelect = document.getElementById('countryCode');
+	const invalidFeedback = document.querySelector('.invalid-feedback');
+	const agreeCheckbox = document.getElementById('agreeCheckbox');
+	const nextButton = document.getElementById('nextBtn');
 
 	$('#togglePassword').click(function () {
 		const passwordField = $('#signupPassword');
@@ -121,39 +113,46 @@ $(document).ready(function () {
 		return emailPattern.test(email);
 	}
 
-	// phone number validation
-	//   const phoneInput = document.getElementById('phoneNumber');
-	// 	phoneInput.addEventListener('input', function () {
-	// 		if (this.value.length > 10) {
-	// 			this.value = this.value.slice(0, 10);
-	// 		}
-	// 	});
-	
-	  const phoneNumberInput = document.getElementById('phoneNumber');
-		const countryCodeSelect = document.getElementById('countryCode');
-		const invalidFeedback = document.querySelector('.invalid-feedback');
+	phoneNumberInput.addEventListener('input', function () {
+		const phoneNumber = this.value.replace(/\D/g, ''); // Remove non-numeric characters
+		if (phoneNumber.length !== 10) {
+			this.classList.add('invalid');
+			invalidFeedback.style.display = 'block';
+		} else {
+			this.classList.remove('invalid');
+			invalidFeedback.style.display = 'none';
+		}
+	});
 
-		phoneNumberInput.addEventListener('input', function () {
-			const phoneNumber = this.value.replace(/\D/g, ''); // Remove non-numeric characters
-			if (phoneNumber.length !== 10) {
-				this.classList.add('invalid');
-				invalidFeedback.style.display = 'block';
-			} else {
-				this.classList.remove('invalid');
-				invalidFeedback.style.display = 'none';
+	countryCodeSelect.addEventListener('change', function () {
+		phoneNumberInput.focus();
+	});
+
+		agreeCheckbox.addEventListener('change', function () {
+			if (!this.checked) {
+				nextButton.disabled;
 			}
 		});
-
-		countryCodeSelect.addEventListener('change', function () {
-			phoneNumberInput.focus();
-		});
-
 
 	// CVV format
-	  const cvvInput = document.getElementById('cvv');
-		cvvInput.addEventListener('input', function () {
-			if (this.value.length > 3) {
-				this.value = this.value.slice(0, 3);
-			}
-		});
+	const cvvInput = document.getElementById('cvv');
+	cvvInput.addEventListener('input', function () {
+		if (this.value.length > 3) {
+			this.value = this.value.slice(0, 3);
+		}
+	});
+
+	$('#nextBtn').click(function () {
+		if ($('#firstName').val() === '' || $('#lastName').val() === '' || $('#signupEmail').val() === '' || $('#signupPassword').val() === '' || $('#confirmPassword').val() === '' || $('#agreeCheckbox').val !== 'true' || $('#signupPassword').val() !== $('#confirmPassword').val()) {
+			$('#signupForm')[0].reportValidity();
+		} else {
+			$('#userInfo').hide();
+			$('#paymentInfo').show();
+		}
+	});
+
+	$('#prevBtn').click(function () {
+		$('#paymentInfo').hide();
+		$('#userInfo').show();
+	});
 });
