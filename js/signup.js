@@ -122,11 +122,30 @@ $(document).ready(function () {
 	}
 
 	// phone number validation
-	  const phoneInput = document.getElementById('phoneNumber');
-		phoneInput.addEventListener('input', function () {
-			if (this.value.length > 10) {
-				this.value = this.value.slice(0, 10);
+	//   const phoneInput = document.getElementById('phoneNumber');
+	// 	phoneInput.addEventListener('input', function () {
+	// 		if (this.value.length > 10) {
+	// 			this.value = this.value.slice(0, 10);
+	// 		}
+	// 	});
+	
+	  const phoneNumberInput = document.getElementById('phoneNumber');
+		const countryCodeSelect = document.getElementById('countryCode');
+		const invalidFeedback = document.querySelector('.invalid-feedback');
+
+		phoneNumberInput.addEventListener('input', function () {
+			const phoneNumber = this.value.replace(/\D/g, ''); // Remove non-numeric characters
+			if (phoneNumber.length !== 10) {
+				this.classList.add('invalid');
+				invalidFeedback.style.display = 'block';
+			} else {
+				this.classList.remove('invalid');
+				invalidFeedback.style.display = 'none';
 			}
+		});
+
+		countryCodeSelect.addEventListener('change', function () {
+			phoneNumberInput.focus();
 		});
 
 

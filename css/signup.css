@@ -133,7 +133,7 @@ label {
     font-weight: 400;
 }
 
-input {
+input, .input-group {
     height: 44px;
     border-radius: 12px !important;
     outline: none !important;
@@ -153,18 +153,33 @@ input:active {
     border-top-left-radius: 0;
     border-bottom-left-radius: 0;
 }
+/* Remove spinners in Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+     -webkit-appearance: none;
+    margin: 0;
+ }
 
-     /* Remove spinners in Chrome, Safari, Edge, Opera */
-        input[type="number"]::-webkit-outer-spin-button,
-        input[type="number"]::-webkit-inner-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
+/* Remove spinners in Firefox */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
 
-        /* Remove spinners in Firefox */
-        input[type="number"] {
-            -moz-appearance: textfield;
-        }
+.phone-number-input-group {
+     border: 1px solid lightgray;
+     background: #FFFFFF;
+}
+
+.country-code {
+    border: none;
+    height: 95%;
+    margin-left: 7px;
+}
+/* Remove focus outline and border for all input fields */
+    input:focus, select:focus, textarea:focus, button:focus {
+        outline: none !important;
+        box-shadow: none !important;
+    }
 
 @media screen and (max-width: 768px) {
     body {
