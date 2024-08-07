@@ -21,21 +21,6 @@ $(document).ready(function () {
 				$('#confirmPassword').removeClass('is-invalid').addClass('is-valid');
 			}
 
-			// $('#toggleOldPassword').click(function () {
-			// 	const oldpasswordField = $('#signupPassword');
-			// 	const confirmoldPasswordField = $('#confirmPassword');
-			// 	const oldpasswordFieldType = oldpasswordField.attr('type');
-			// 	if (oldpasswordFieldType === 'password') {
-			// 		oldpasswordField.attr('type', 'text');
-			// 		confirmoldPasswordField.attr('type', 'text');
-			// 		$('#eyeIcon').removeClass('fa-eye').addClass('fa-eye-slash');
-			// 	} else {
-			// 		oldpasswordField.attr('type', 'password');
-			// 		confirmoldPasswordField.attr('type', 'password');
-			// 		$('#eyeIcon').removeClass('fa-eye-slash').addClass('fa-eye');
-			// 	}
-			// });
-
 			$.ajax({
 				url: '/backend/reset_password', // Replace with your backend reset password endpoint
 				type: 'POST',
@@ -69,11 +54,11 @@ $(document).ready(function () {
 		if (newPasswordFieldType === 'password') {
 			newPasswordField.attr('type', 'text');
 			confirmNewPasswordField.attr('type', 'text');
-			$('#eyeIcon').removeClass('fa-eye').addClass('fa-eye-slash');
+			$('#eyeIconNew').removeClass('fa-eye').addClass('fa-eye-slash');
 		} else {
 			newPasswordField.attr('type', 'password');
 			confirmNewPasswordField.attr('type', 'password');
-			$('#eyeIcon').removeClass('fa-eye-slash').addClass('fa-eye');
+			$('#eyeIconNew').removeClass('fa-eye-slash').addClass('fa-eye');
 		}
 	});
 
