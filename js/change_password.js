@@ -21,7 +21,20 @@ $(document).ready(function () {
 				$('#confirmPassword').removeClass('is-invalid').addClass('is-valid');
 			}
 
-			console.log(newPassword);
+			// $('#toggleOldPassword').click(function () {
+			// 	const oldpasswordField = $('#signupPassword');
+			// 	const confirmoldPasswordField = $('#confirmPassword');
+			// 	const oldpasswordFieldType = oldpasswordField.attr('type');
+			// 	if (oldpasswordFieldType === 'password') {
+			// 		oldpasswordField.attr('type', 'text');
+			// 		confirmoldPasswordField.attr('type', 'text');
+			// 		$('#eyeIcon').removeClass('fa-eye').addClass('fa-eye-slash');
+			// 	} else {
+			// 		oldpasswordField.attr('type', 'password');
+			// 		confirmoldPasswordField.attr('type', 'password');
+			// 		$('#eyeIcon').removeClass('fa-eye-slash').addClass('fa-eye');
+			// 	}
+			// });
 
 			$.ajax({
 				url: '/backend/reset_password', // Replace with your backend reset password endpoint
@@ -36,6 +49,32 @@ $(document).ready(function () {
 			});
 		}
 		$(this).addClass('was-validated');
+	});
+
+	$('#toggleOldPassword').click(function () {
+		const oldPasswordField = $('#oldPassword');
+		const oldPasswordFieldType = oldPasswordField.attr('type');
+		if (oldPasswordFieldType === 'password') {
+			oldPasswordField.attr('type', 'text');
+			$('#eyeIcon').removeClass('fa-eye').addClass('fa-eye-slash');
+		} else {
+			oldPasswordField.attr('type', 'password');
+			$('#eyeIcon').removeClass('fa-eye-slash').addClass('fa-eye');
+		}
+	});
+	$('#toggleNewPassword').click(function () {
+		const newPasswordField = $('#resetPassword');
+		const confirmNewPasswordField = $('#confirmPassword');
+		const newPasswordFieldType = newPasswordField.attr('type');
+		if (newPasswordFieldType === 'password') {
+			newPasswordField.attr('type', 'text');
+			confirmNewPasswordField.attr('type', 'text');
+			$('#eyeIcon').removeClass('fa-eye').addClass('fa-eye-slash');
+		} else {
+			newPasswordField.attr('type', 'password');
+			confirmNewPasswordField.attr('type', 'password');
+			$('#eyeIcon').removeClass('fa-eye-slash').addClass('fa-eye');
+		}
 	});
 
 	function validatePassword(password) {

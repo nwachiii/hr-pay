@@ -37,7 +37,20 @@ $(document).ready(function () {
 		}
 		$(this).addClass('was-validated');
 	});
-
+	$('#toggleNewPassword').click(function () {
+		const newPasswordField = $('#resetPassword');
+		const confirmNewPasswordField = $('#confirmPassword');
+		const newPasswordFieldType = newPasswordField.attr('type');
+		if (newPasswordFieldType === 'password') {
+			newPasswordField.attr('type', 'text');
+			confirmNewPasswordField.attr('type', 'text');
+			$('#eyeIcon').removeClass('fa-eye').addClass('fa-eye-slash');
+		} else {
+			newPasswordField.attr('type', 'password');
+			confirmNewPasswordField.attr('type', 'password');
+			$('#eyeIcon').removeClass('fa-eye-slash').addClass('fa-eye');
+		}
+	});
 	function validatePassword(password) {
 		const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
 		return passwordPattern.test(password);

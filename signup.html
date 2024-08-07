@@ -71,7 +71,7 @@
                         <option value="+61">+61</option>
                         <option value="+33">+33</option>
                     </select>
-                    <input type="text" inputmode="numeric" placeholder="Phone number" class="form-control bg-transparent" id="phoneNumber" style="border: none;">
+                    <input type="number" inputmode="numeric" placeholder="Phone number" class="form-control bg-transparent" id="phoneNumber" style="border: none;">
                     <div class="invalid-feedback">
                         Please enter a valid phone number with exactly 10 digits
                     </div>
@@ -112,14 +112,70 @@
                         </div>
                     </div>
                
-                
+                    <!-- <div class="">
+                        <label for="country" class="form-label">Country <span class="text-danger">*</span></label>
+                        <input type="text" placeholder="Country" class="form-control" id="country" required>
+                        <div class="invalid-feedback">
+                            Please enter your country
+                        </div>
+                    </div>
+
                     <div class="grid-item">
                         <label for="state" class="form-label">State <span class="text-danger">*</span></label>
                         <input type="text" placeholder="State" class="form-control" id="state" required>
                         <div class="invalid-feedback">
                             Please enter your state
                         </div>
-                    </div>
+                    </div> -->
+                           <div class="form-group">
+                <label for="country" class="form-label">Country <span class="text-danger">*</span></label>
+                <select class="form-control form-select select-field-option" id="country" required>
+                   <option value="" disabled selected>Select Country</option>
+                    <option value="Argentina">Argentina</option>
+                    <option value="Australia">Australia</option>
+                    <option value="Austria">Austria</option>
+                    <option value="Belgium">Belgium</option>
+                    <option value="Brazil">Brazil</option>
+                    <option value="Canada">Canada</option>
+                    <option value="China">China</option>
+                    <option value="Denmark">Denmark</option>
+                    <option value="Egypt">Egypt</option>
+                    <option value="Finland">Finland</option>
+                    <option value="France">France</option>
+                    <option value="Germany">Germany</option>
+                    <option value="India">India</option>
+                    <option value="Indonesia">Indonesia</option>
+                    <option value="Italy">Italy</option>
+                    <option value="Japan">Japan</option>
+                    <option value="Mexico">Mexico</option>
+                    <option value="Netherlands">Netherlands</option>
+                    <option value="Nigeria">Nigeria</option>
+                    <option value="Norway">Norway</option>
+                    <option value="Russia">Russia</option>
+                    <option value="SouthAfrica">South Africa</option>
+                    <option value="SouthKorea">South Korea</option>
+                    <option value="Spain">Spain</option>
+                    <option value="Sweden">Sweden</option>
+                    <option value="Switzerland">Switzerland</option>
+                    <option value="UK">UK</option>
+                    <option value="USA">United States</option>
+
+                </select>
+                <div class="invalid-feedback">
+                    Please enter your country
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="state" class="form-label">State <span class="text-danger">*</span></label>
+                <select class="form-control form-select select-field-option" id="state" required>
+                    <option value="">Select State</option>
+                    <!-- States will be populated dynamically -->
+                </select>
+                <div class="invalid-feedback">
+                    Please enter your state
+                </div>
+            </div>
                     <div class="grid-item">
                         <label for="zipcode" class="form-label">Zip Code <span class="text-danger">*</span></label>
                         <input type="text" placeholder="Zip code" class="form-control" id="zipcode" required>
@@ -128,30 +184,23 @@
                         </div>
                     </div>
              
-                <div class="">
-                    <label for="country" class="form-label">Country <span class="text-danger">*</span></label>
-                    <input type="text" placeholder="Country" class="form-control" id="country" required>
-                    <div class="invalid-feedback">
-                        Please enter your country
-                    </div>
-                </div>
-                <div class="">
+                
+                <!-- <div class="">
                     <label for="role" class="form-label">Role <span class="text-danger">*</span></label>
                     <input type="text" placeholder="Role" class="form-control" id="role" required>
                     <div class="invalid-feedback">
                         Please enter your role
                     </div>
-                </div>
+                </div> -->
                  <div class="checkbox-container">
                     <label class="checkbox-label">
                         <input type="checkbox" id="agreeCheckbox">
-                        I agree to the &nbsp <a href="#"> privacy policy </a> &nbsp & &nbsp <a href="#"> terms</a>
+                        I agree to the &nbsp <a href="#"> Terms & Conditions</a>
                     </label>
                 </div>
-                <button type="button" id="nextBtn" class="btn btn-gradient w-100">Next</button>
+                <button type="button" id="nextBtn" class="btn btn-gradient w-100" disabled>Next</button>
             </div>
             <div id="paymentInfo" style="display: none;">
-                <!-- <div class="mb-3 d-flex gap-4"> -->
                     <div class="grid-item">
                         <label for="cardNumber" class="form-label">Card Number <span class="text-danger">*</span></label>
                         <input type="number" placeholder="Card number" class="form-control" id="cardNumber" required>
@@ -166,8 +215,7 @@
                             Please enter the name on your card
                         </div>
                     </div>
-                <!-- </div> -->
-                <!-- <div class="mb-3 d-flex gap-4"> -->
+               
                     <div class="grid-item">
                         <label for="expiryDate" class="form-label">Expiry Date <span class="text-danger">*</span></label>
                         <input type="month" placeholder="Month - YYYY" class="form-control" id="expiryDate" required>

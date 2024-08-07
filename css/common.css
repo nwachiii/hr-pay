@@ -1,12 +1,6 @@
 @font-face {
-    font-family: 'Avenir';
-    src: url('../fonts/Avenir-Regular.woff2') format('woff2');
-    font-weight: 400;
-}
-
-@font-face {
-    font-family: 'Avenir';
-    src: url('../fonts/Avenir-Bold.woff2') format('woff2');
+    font-family: 'CongenialBlack';
+    src: url('../fonts/Congenial/CONGENIAL_BLACK.OTF');
     font-weight: 700;
 }
 
@@ -46,7 +40,7 @@ h2 {
     margin: .6rem auto 1.5rem;
     color: #2271b6;
     font-size: 24px;
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'CongenialBlack', sans-serif;
 }
 
 .btn-gradient {
@@ -88,6 +82,11 @@ input::placeholder {
 
 a {
     color: #2271b6;
+}
+
+input:focus, select:focus, textarea:focus, button:focus, i:focus {
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 @media screen and (max-width: 500px) {
