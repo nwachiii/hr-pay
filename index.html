@@ -17,13 +17,13 @@
     <div class="container">
         <div class="nav_area">
             <a class="" href="index.html">
-                <img src="assets/hrpayhub-logo.png" alt="" width="130" height="fit-content" class="justify-content-center">
+                <img src="assets/hrpayhub-logo.png" alt="" width="160" height="fit-content" class="justify-content-center">
             </a>
-            <!-- <p>Let's get you logged in</p> -->
-             <h2>Sign In to Your Account</h2>
+             <h2 class="mt-4">Welcome</h2>
         </div>
 
         <form id="loginForm" novalidate>
+            <p>Please login into your account to continue</p>
             <div class="mb-3">
                 <label for="loginEmail" class="form-label">Email address</label>
                 <input type="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" placeholder="Enter email address" class="form-control" id="loginEmail" required>
@@ -34,7 +34,16 @@
             <div class="mb-3">
                 <label for="loginPassword" class="form-label">Password</label>
                 <input type="password" placeholder="Enter password" class="form-control" id="loginPassword" pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/" required>
-                 <p class="mt-2 text-end forgot_pwrd_text"> <a href="forgot_password.html" class="text-decoration-none">Forgot password?</a></p>
+
+                <div class="d-flex justify-content-between mt-3 forgot_pwrd_text align-content-center">
+                    <div class="checkbox-container">
+                    <label class="checkbox-label align-content-center gap-2">
+                        <input type="checkbox" id="rememberMe">
+                      <span>Remember me</span>  
+                    </label>
+                   </div>
+                   <p class=""> <a href="forgot_password.html" class="text-decoration-none">Forgot password?</a></p>
+                </div>
                 <div class="invalid-feedback">
                     Please enter your password
                 </div>

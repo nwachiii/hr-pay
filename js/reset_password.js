@@ -1,58 +1,50 @@
 $(document).ready(function () {
-	$('#resetPasswordForm').on('submit', function (event) {
-		event.preventDefault();
-		if (this.checkValidity() === false) {
-			event.stopPropagation();
-		} else {
-			const newPassword = $('#resetPassword').val();
-			const confirmPassword = $('#confirmPassword').val();
-
-			if (!validatePassword(newPassword)) {
-				$('#resetPassword').addClass('is-invalid');
-				return;
-			} else {
-				$('#resetPassword').removeClass('is-invalid').addClass('is-valid');
-			}
-
-			if (newPassword !== confirmPassword) {
-				$('#confirmPassword').addClass('is-invalid');
-				return;
-			} else {
-				$('#confirmPassword').removeClass('is-invalid').addClass('is-valid');
-			}
-
-			console.log(newPassword);
-
-			$.ajax({
-				url: '/backend/reset_password', // Replace with your backend reset password endpoint
-				type: 'POST',
-				data: {newPassword},
-				success: function (response) {
-					$('#resetPasswordMessage').text(response.message).removeClass('text-danger').addClass('text-success');
-				},
-				error: function (xhr) {
-					$('#resetPasswordMessage').text(xhr.responseJSON.message).removeClass('text-success').addClass('text-danger');
-				},
-			});
-		}
-		$(this).addClass('was-validated');
-	});
+	// Toggle password visibility
 	$('#toggleNewPassword').click(function () {
-		const newPasswordField = $('#resetPassword');
-		const confirmNewPasswordField = $('#confirmPassword');
-		const newPasswordFieldType = newPasswordField.attr('type');
-		if (newPasswordFieldType === 'password') {
-			newPasswordField.attr('type', 'text');
-			confirmNewPasswordField.attr('type', 'text');
+		const passwordField = $('#resetPassword');
+		const passwordFieldType = passwordField.attr('type');
+		const confirmPasswordField = $('#confirmPassword');
+
+		if (passwordFieldType === 'password') {
+			passwordField.attr('type', 'text');
+			confirmPasswordField.attr('type', 'text');
 			$('#eyeIcon').removeClass('fa-eye').addClass('fa-eye-slash');
 		} else {
-			newPasswordField.attr('type', 'password');
-			confirmNewPasswordField.attr('type', 'password');
+			passwordField.attr('type', 'password');
+			confirmPasswordField.attr('type', 'password');
 			$('#eyeIcon').removeClass('fa-eye-slash').addClass('fa-eye');
 		}
 	});
-	function validatePassword(password) {
+
+	// Validate the form
+	$('#resetForm').on('submit', function (event) {
+		event.preventDefault();
+		const password = $('#resetPassword').val();
+		const confirmPassword = $('#confirmPassword').val();
+		const errorMessage = $('#errorMessage');
+
+		// Clear previous error message
+		errorMessage.text('');
+
+		if (password !== confirmPassword) {
+			errorMessage.text('Passwords do not match.');
+			$('#confirmPassword').addClass('is-invalid');
+			return;
+		} else {
+			$('#confirmPassword').removeClass('is-invalid').addClass('is-valid');
+		}
+
 		const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
-		return passwordPattern.test(password);
-	}
+
+		if (!passwordPattern.test(password)) {
+			errorMessage.text('Password must be at least 8 characters, contain an uppercase letter, a lowercase letter, a number, and a special character.');
+			$('#resetPassword').addClass('is-invalid');
+			return;
+		} else {
+			$('#resetPassword').removeClass('is-invalid').addClass('is-valid');
+		}
+
+		// If validation passes, you can proceed with form submission (e.g., via AJAX)
+		console.log('Form is valid and ready for submission');
+	});
 });
