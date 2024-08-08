@@ -23,19 +23,19 @@ $(document).ready(function () {
 			const cvv = $('#cvv').val();
 
 			if (!validateEmail(email)) {
-				$('#signupEmail').addClass('is-invalid');
+				$('#signupEmail').addClass('invalid');
 				return;
 			} else {
-				$('#signupEmail').removeClass('is-invalid').addClass('is-valid');
+				$('#signupEmail').removeClass('invalid').addClass('valid');
 			}
 
 			const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
 
 			if (!passwordPattern.test(password)) {
-				$('#signupPassword').addClass('is-invalid');
+				$('#signupPassword').addClass('invalid');
 				return;
 			} else {
-				$('#signupPassword').removeClass('is-invalid').addClass('is-valid');
+				$('#signupPassword').removeClass('invalid').addClass('is-valid');
 			}
 
 			if (password !== confirmPassword) {
@@ -269,6 +269,8 @@ $(document).ready(function () {
 			modal.style.display = 'none';
 		}
 	};
+
+	
 	
 	// Credit card info
 

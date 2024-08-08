@@ -61,13 +61,13 @@ h2 {
     color: white;
 }
 
-.form-control:invalid {
+/* .form-control:invalid {
     border-color: #dc3545;
 }
 
 .form-control:valid {
     border-color: #28a745;
-}
+} */
 
 #loginMessage {
     font-family: 'Avenir', sans-serif;
