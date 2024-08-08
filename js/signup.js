@@ -131,6 +131,66 @@ $(document).ready(function () {
 		}
 	});
 
+	const stateCityMap = {
+		// Nigeria States and Cities
+		Abia: ['Aba', 'Umuahia'],
+		Abuja: ['Abuja'],
+		Adamawa: ['Yola', 'Mubi'],
+		'Akwa Ibom': ['Uyo', 'Ikot Ekpene'],
+		Anambra: ['Awka', 'Onitsha'],
+		Bauchi: ['Bauchi', 'Azare'],
+		Bayelsa: ['Yenagoa'],
+		Benue: ['Makurdi', 'Gboko'],
+		Borno: ['Maiduguri', 'Biu'],
+		'Cross River': ['Calabar', 'Ikom'],
+		Delta: ['Asaba', 'Warri'],
+		Ebonyi: ['Abakaliki'],
+		Edo: ['Benin City'],
+		Ekiti: ['Ado-Ekiti'],
+		Enugu: ['Enugu', 'Nsukka'],
+		Gombe: ['Gombe'],
+		Imo: ['Owerri'],
+		Jigawa: ['Dutse', 'Hadejia'],
+		Kaduna: ['Kaduna', 'Zaria'],
+		Kano: ['Kano', 'Wudil'],
+		Katsina: ['Katsina', 'Daura'],
+		Kebbi: ['Birnin Kebbi'],
+		Kogi: ['Lokoja', 'Okene'],
+		Kwara: ['Ilorin', 'Offa'],
+		Lagos: ['Lagos', 'Ikeja'],
+		Nasarawa: ['Lafia', 'Keffi'],
+		Niger: ['Minna', 'Suleja'],
+		Ogun: ['Abeokuta', 'Ijebu Ode'],
+		Ondo: ['Akure', 'Ondo City'],
+		Osun: ['Oshogbo', 'Ife'],
+		Oyo: ['Ibadan', 'Oyo'],
+		Plateau: ['Jos'],
+		Rivers: ['Port Harcourt'],
+		Sokoto: ['Sokoto'],
+		Taraba: ['Jalingo'],
+		Yobe: ['Damaturu'],
+		Zamfara: ['Gusau'],
+
+		// UK Regions and Cities
+		England: ['London', 'Birmingham', 'Manchester', 'Liverpool', 'Leeds', 'Sheffield', 'Bristol', 'Newcastle', 'Nottingham', 'Leicester'],
+		Scotland: ['Edinburgh', 'Glasgow', 'Aberdeen', 'Dundee', 'Inverness', 'Stirling'],
+		Wales: ['Cardiff', 'Swansea', 'Newport', 'Wrexham'],
+		'Northern Ireland': ['Belfast', 'Derry', 'Lisburn', 'Newry'],
+	};
+
+		$('#state').change(function () {
+			const selectedState = $(this).val();
+			const cityDropdown = $('#city');
+			cityDropdown.empty();
+			cityDropdown.append('<option value="">Select City</option>');
+
+			if (stateCityMap[selectedState]) {
+				stateCityMap[selectedState].forEach(function (city) {
+					cityDropdown.append(`<option value="${city}">${city}</option>`);
+				});
+			}
+		});
+
 	const phoneNumberInput = document.getElementById('phoneNumber');
 	const countryCodeSelect = document.getElementById('countryCode');
 	const invalidFeedback = document.querySelector('.invalid-feedback');
