@@ -277,12 +277,24 @@ $(document).ready(function () {
 		}
 	};
 	
-	// CVV format
-	const cvvInput = document.getElementById('cvv');
-	cvvInput.addEventListener('input', function () {
-		if (this.value.length > 3) {
-			this.value = this.value.slice(0, 3);
+	// Credit card info
+
+	document.getElementById('cardNumber').addEventListener('input', function (e) {
+		let value = e.target.value.replace(/\D/g, '');
+		value = value.match(/.{1,4}/g)?.join(' ') || value;
+		e.target.value = value;
+	});
+
+	document.getElementById('expiryDate').addEventListener('input', function (e) {
+		let value = e.target.value.replace(/\D/g, '');
+		if (value.length > 2) {
+			value = value.slice(0, 2) + '/' + value.slice(2);
 		}
+		e.target.value = value;
+	});
+
+	document.getElementById('cvv').addEventListener('input', function (e) {
+		e.target.value = e.target.value.replace(/\D/g, '').slice(0, 3);
 	});
 
 	

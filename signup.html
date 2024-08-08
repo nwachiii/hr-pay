@@ -29,16 +29,12 @@
                     <div class="grid-item">
                         <label for="firstName" class="form-label">First Name <span class="text-danger">*</span></label>
                         <input type="text" placeholder="First name" class="form-control" id="firstName" required>
-                        <!-- <div class="invalid-feedback">
-                            Please enter your first name
-                        </div> -->
+                  
                     </div>
                     <div class="grid-item">
                         <label for="lastName" class="form-label">Last Name <span class="text-danger">*</span></label>
                         <input type="text" placeholder="Last name" class="form-control" id="lastName" required>
-                        <!-- <div class="invalid-feedback">
-                            Please enter your last name
-                        </div> -->
+                      
                     </div>
              
                 <div class="">
@@ -190,32 +186,33 @@
                 </div>
                 <button type="button" id="nextBtn" class="btn btn-gradient w-100" disabled>Next</button>
             </div>
-            <div id="paymentInfo" style="display: none;">
-                    <div class="grid-item">
-                        <label for="cardNumber" class="form-label">Card Number <span class="text-danger">*</span></label>
-                        <input name="cardNumber"  type="number" placeholder="Card number" class="form-control" id="cardNumber" required>
-                        <div class="invalid-feedback">
-                            Please enter your card number
-                        </div>
-                    </div>
-                    <div class="grid-item">
+            <div id="paymentInfo" style="display: none;" class="credit-card-form">
+                  <div class="grid-item">
                         <label for="cardName" class="form-label">Name on Card <span class="text-danger">*</span></label>
                         <input name="cardName" type="text"  placeholder="Name on card" class="form-control" id="cardName" required>
                         <div class="invalid-feedback">
                             Please enter the name on your card
                         </div>
                     </div>
+                    <div class="grid-item">
+                        <label for="cardNumber" class="form-label">Card Number <span class="text-danger">*</span></label>
+                        <input name="cardNumber"  type="text" id="cardNumber" class="masked-input form-control" placeholder="0000 0000 0000 0000" maxlength="19" required>
+                        <div class="invalid-feedback">
+                            Please enter your card number
+                        </div>
+                    </div>
+                  
                
                     <div class="grid-item">
                         <label for="expiryDate" class="form-label">Expiry Date <span class="text-danger">*</span></label>
-                        <input name="expiryDate"  type="month" placeholder="Month - YYYY" class="form-control" id="expiryDate" required>
+                        <input name="expiryDate"  type="text" id="expiryDate" class="masked-input form-control" placeholder="MM/YY" maxlength="5" required>
                         <div class="invalid-feedback">
                             Please enter the expiry date
                         </div>
                     </div>
                     <div class="grid-item">
                         <label for="cvv" class="form-label">CVV <span class="text-danger">*</span></label>
-                        <input name="cvv" type="number"  placeholder="CVV" class="form-control" id="cvv" max="999" required>
+                        <input name="cvv" type="text" id="cvc" class="masked-input form-control" placeholder="CVC" maxlength="3" required>
                         <div class="invalid-feedback">
                             Please enter the CVV
                         </div>

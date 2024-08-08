@@ -155,7 +155,7 @@ input[type="number"]::-webkit-inner-spin-button {
 
 /* Remove spinners in Firefox */
 input[type="number"] {
-    -moz-appearance: textfield;
+    -moz-appearance: textfield !important;
 }
 
 .phone-number-input-group {
@@ -214,6 +214,57 @@ input:focus, select:focus, textarea:focus, button:focus, i:focus {
   border-radius: 20px;       /* roundness of the scroll thumb */
   border: 3px solid #FAFAFA;  /* creates padding around scroll thumb */
 }
+
+input:-internal-autofill-selected, select:-internal-autofill-selected {
+  appearance: menulist-button;
+  background-image: none !important;
+  background-color: transparent !important;
+  color: #191919 !important;
+}
+
+input:-webkit-autofill, select:-webkit-autofill,
+input:-webkit-autofill:hover,
+select:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+select:-webkit-autofill:focus,
+input:-webkit-autofill:active,
+select:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px #fff inset !important;
+  -webkit-text-fill-color: #191919 !important;
+}
+
+.masked-input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.masked-input::placeholder {
+  color: #aaa;
+}
+
+.masked-input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+.masked-input-masked {
+  -webkit-mask-image: url('data:image/svg+xml;base64,...'); /* Use an SVG for the mask */
+  mask-image: url('data:image/svg+xml;base64,...');
+  mask-size: contain;
+  mask-repeat: no-repeat;
+  mask-position: center right;
+  padding-right: 30px; /* Adjust to make space for the mask */
+}
+
+/* End of Credit card styles */
+
+
+
+
+
 
 @media screen and (max-width: 1025px) { 
      .container {
