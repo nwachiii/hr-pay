@@ -29,12 +29,12 @@ $(document).ready(function () {
 				$('#signupEmail').removeClass('is-invalid').addClass('is-valid');
 			}
 
-			if (!validatePhone(phone)) {
-				$('#phoneNumber').addClass('is-invalid');
-				return;
-			} else {
-				$('#phoneNumber').removeClass('is-invalid').addClass('is-valid');
-			}
+			// if (!validatePhone(phone)) {
+			// 	$('#phoneNumber').addClass('is-invalid');
+			// 	return;
+			// } else {
+			// 	$('#phoneNumber').removeClass('is-invalid').addClass('is-valid');
+			// }
 
 			const passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/;
 
