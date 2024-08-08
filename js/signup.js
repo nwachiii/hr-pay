@@ -1,6 +1,5 @@
 $(document).ready(function () {
 	$('#signupForm').on('submit', function (event) {
-		event.preventDefault();
 		if (this.checkValidity() === false) {
 			event.stopPropagation();
 		} else {
@@ -189,6 +188,9 @@ $(document).ready(function () {
 	// const countryCodeSelect = document.getElementById('countryCode');
 	const invalidFeedback = document.querySelector('.invalid-feedback');
 	const agreeCheckbox = document.getElementById('agreeCheckbox');
+	const cvv = document.getElementById('cvv');
+	const expiryDate = document.getElementById('expiryDate');
+	const cardNumber = document.getElementById('cardNumber');
 	const nextButton = document.getElementById('nextBtn');
 
 	$('#togglePassword').click(function () {
@@ -274,13 +276,13 @@ $(document).ready(function () {
 	
 	// Credit card info
 
-	document.getElementById('cardNumber').addEventListener('input', function (e) {
+	cardNumber?.addEventListener('input', function (e) {
 		let value = e.target.value.replace(/\D/g, '');
 		value = value.match(/.{1,4}/g)?.join(' ') || value;
 		e.target.value = value;
 	});
 
-	document.getElementById('expiryDate').addEventListener('input', function (e) {
+	expiryDate?.addEventListener('input', function (e) {
 		let value = e.target.value.replace(/\D/g, '');
 		if (value.length > 2) {
 			value = value.slice(0, 2) + '/' + value.slice(2);
@@ -288,7 +290,7 @@ $(document).ready(function () {
 		e.target.value = value;
 	});
 
-	document.getElementById('cvv').addEventListener('input', function (e) {
+	cvv?.addEventListener('input', function (e) {
 		e.target.value = e.target.value.replace(/\D/g, '').slice(0, 3);
 	});
 
