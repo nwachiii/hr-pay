@@ -8,17 +8,11 @@ body {
     background: linear-gradient(to right, #ECECEC, #FFFFFF);
     height: 100vh;
     margin: 0;
-    opacity: 0;
     font-weight: 400;
     font-family: 'Avenir', sans-serif;
-    transition: opacity 0.3s ease-in;
      display: flex;
     align-items: center;
     justify-content: center;
-}
-
-body.fade-in {
-    opacity: 1;
 }
 
 .navbar {

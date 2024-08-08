@@ -4,19 +4,19 @@ $(document).ready(function () {
 		if (this.checkValidity() === false) {
 			event.stopPropagation();
 		} else {
-			const firstName = $('#firstName').val();
+			const state = $('#state').val();
+			const zipcode = $('#zipcode').val();
 			const lastName = $('#lastName').val();
 			const email = $('#signupEmail').val();
 			const phone = $('#phoneNumber').val();
+			const firstName = $('#firstName').val();
+			const companyName = $('#companyName').val();
 			const countryCode = $('#countryCode').val();
 			const password = $('#signupPassword').val();
-			const confirmPassword = $('#confirmPassword').val();
-			const companyName = $('#companyName').val();
 			const companyAddress = $('#companyAddress').val();
-			const state = $('#state').val();
-			const zipcode = $('#zipcode').val();
+			const confirmPassword = $('#confirmPassword').val();
 			const country = $('#country').val();
-			// const role = $('#role').val();
+			const city = $('#city').val();
 			const cardNumber = $('#cardNumber').val();
 			const cardName = $('#cardName').val();
 			const expiryDate = $('#expiryDate').val();
@@ -54,7 +54,7 @@ $(document).ready(function () {
 				$('#confirmPassword')[0].setCustomValidity('');
 			}
 
-			console.log(firstName, lastName, email, countryCode + phone, password, companyName, companyAddress, state, zipcode, country, cardNumber, cardName, expiryDate, cvv);
+			console.log(firstName, lastName, email, countryCode + phone, password, companyName, companyAddress, state, zipcode, country, city, cardNumber, cardName, expiryDate, cvv);
 
 			$.ajax({
 				url: '/backend/signup', // Replace with backend sign-up endpoint
@@ -70,6 +70,7 @@ $(document).ready(function () {
 					state,
 					zipcode,
 					country,
+					city,
 					// role,
 					cardNumber,
 					cardName,
@@ -192,7 +193,7 @@ $(document).ready(function () {
 		});
 
 	const phoneNumberInput = document.getElementById('phoneNumber');
-	const countryCodeSelect = document.getElementById('countryCode');
+	// const countryCodeSelect = document.getElementById('countryCode');
 	const invalidFeedback = document.querySelector('.invalid-feedback');
 	const agreeCheckbox = document.getElementById('agreeCheckbox');
 	const nextButton = document.getElementById('nextBtn');
@@ -220,7 +221,7 @@ $(document).ready(function () {
 	phoneNumberInput.addEventListener('input', function () {
 		const phoneNumber = this.value.replace(/\D/g, ''); // Remove non-numeric characters
 
-		if (phoneNumber.length !== 10) {
+		if (phoneNumber.length < 10 || phoneNumber.length > 10) {
 			this.classList.add('invalid');
 			invalidFeedback.style.display = 'block';
 			invalidFeedback.style.width = 'fit-content';
