@@ -43,6 +43,100 @@ $(document).ready(function () {
 		}
 	});
 
+	const phoneNumberInput = document.getElementById('phoneNumber');
+	const countryCodeSelect = document.getElementById('countryCode');
+	const invalidFeedback = document.querySelector('.invalid-feedback');
+	const agreeCheckbox = document.getElementById('agreeCheckbox');
+	const nextButton = document.getElementById('nextBtn');
+
+	$('#togglePassword').click(function () {
+		const passwordField = $('#signupPassword');
+		const confirmPasswordField = $('#confirmPassword');
+		const passwordFieldType = passwordField.attr('type');
+		if (passwordFieldType === 'password') {
+			passwordField.attr('type', 'text');
+			confirmPasswordField.attr('type', 'text');
+			$('#eyeIcon').removeClass('fa-eye').addClass('fa-eye-slash');
+		} else {
+			passwordField.attr('type', 'password');
+			confirmPasswordField.attr('type', 'password');
+			$('#eyeIcon').removeClass('fa-eye-slash').addClass('fa-eye');
+		}
+	});
+
+	function validateEmail(email) {
+		const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+		return emailPattern.test(email);
+	}
+
+	phoneNumberInput.addEventListener('input', function () {
+		const phoneNumber = this.value.replace(/\D/g, ''); // Remove non-numeric characters
+
+		if (phoneNumber.length !== 10) {
+			this.classList.add('invalid');
+			invalidFeedback.style.display = 'block';
+			invalidFeedback.style.width = 'fit-content';
+		} else {
+			this.classList.remove('invalid');
+			invalidFeedback.style.display = 'none';
+		}
+	});
+
+	agreeCheckbox.addEventListener('change', function () {
+		// console.log('Checking')
+		nextButton.disabled = !this.checked;
+	});
+
+	// CVV format
+	const cvvInput = document.getElementById('cvv');
+	cvvInput.addEventListener('input', function () {
+		if (this.value.length > 3) {
+			this.value = this.value.slice(0, 3);
+		}
+	});
+
+	$('#nextBtn').click(function () {
+		if ($('#firstName').val() === '' || $('#lastName').val() === '' || $('#signupEmail').val() === '' || $('#signupPassword').val() === '' || $('#confirmPassword').val() === '' || $('#agreeCheckbox').val !== 'true' || $('#signupPassword').val() !== $('#confirmPassword').val()) {
+			$('#signupForm')[0].reportValidity();
+		} else {
+			$('#userInfo').hide();
+			$('#paymentInfo').show();
+		}
+	});
+
+	$('#prevBtn').click(function () {
+		$('#paymentInfo').hide();
+		$('#userInfo').show();
+	});
+
+	// Get the modal
+	var modal = document.getElementById('modal');
+
+	// Get the link that opens the modal
+	var link = document.getElementById('terms-link');
+
+	// Get the <span> element that closes the modal
+	var span = document.getElementsByClassName('close')[0];
+
+	// When the user clicks the link, open the modal
+	link.onclick = function (event) {
+		event.preventDefault(); // Prevent the default link behavior
+		modal.style.display = 'block';
+	};
+
+	// When the user clicks on <span> (x), close the modal
+	span.onclick = function () {
+		modal.style.display = 'none';
+	};
+
+	// When the user clicks anywhere outside of the modal, close it
+	window.onclick = function (event) {
+		if (event.target == modal) {
+			modal.style.display = 'none';
+		}
+	};
+
+	
 	$('#signupForm').on('submit', function (event) {
 		event.preventDefault();
 		if (this.checkValidity() === false) {
@@ -98,7 +192,7 @@ $(document).ready(function () {
 				$('#confirmPassword')[0].setCustomValidity('');
 			}
 
-			console.log(firstName, lastName, email, countryCode + phone, password, companyName, companyAddress, state, zipcode, country, role, cardNumber, cardName, expiryDate, cvv);
+			console.log(firstName, lastName, email, countryCode + phone, password, companyName, companyAddress, state, zipcode, country, cardNumber, cardName, expiryDate, cvv);
 
 			$.ajax({
 				url: '/backend/signup', // Replace with backend sign-up endpoint
@@ -129,70 +223,5 @@ $(document).ready(function () {
 			});
 		}
 		$(this).addClass('was-validated');
-	});
-
-	const phoneNumberInput = document.getElementById('phoneNumber');
-	const countryCodeSelect = document.getElementById('countryCode');
-	const invalidFeedback = document.querySelector('.invalid-feedback');
-	const agreeCheckbox = document.getElementById('agreeCheckbox');
-	const nextButton = document.getElementById('nextBtn');
-
-	$('#togglePassword').click(function () {
-		const passwordField = $('#signupPassword');
-		const confirmPasswordField = $('#confirmPassword');
-		const passwordFieldType = passwordField.attr('type');
-		if (passwordFieldType === 'password') {
-			passwordField.attr('type', 'text');
-			confirmPasswordField.attr('type', 'text');
-			$('#eyeIcon').removeClass('fa-eye').addClass('fa-eye-slash');
-		} else {
-			passwordField.attr('type', 'password');
-			confirmPasswordField.attr('type', 'password');
-			$('#eyeIcon').removeClass('fa-eye-slash').addClass('fa-eye');
-		}
-	});
-
-	function validateEmail(email) {
-		const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
-		return emailPattern.test(email);
-	}
-
-	phoneNumberInput.addEventListener('input', function () {
-		const phoneNumber = this.value.replace(/\D/g, ''); // Remove non-numeric characters
-
-		if (phoneNumber.length !== 10) {
-			this.classList.add('invalid');
-			invalidFeedback.style.display = 'block';
-		} else {
-			this.classList.remove('invalid');
-			invalidFeedback.style.display = 'none';
-		}
-	});
-
-	agreeCheckbox.addEventListener('change', function () {
-		console.log('Checking')
-		nextButton.disabled = !this.checked;
-	});
-
-	// CVV format
-	const cvvInput = document.getElementById('cvv');
-	cvvInput.addEventListener('input', function () {
-		if (this.value.length > 3) {
-			this.value = this.value.slice(0, 3);
-		}
-	});
-
-	$('#nextBtn').click(function () {
-		if ($('#firstName').val() === '' || $('#lastName').val() === '' || $('#signupEmail').val() === '' || $('#signupPassword').val() === '' || $('#confirmPassword').val() === '' || $('#agreeCheckbox').val !== 'true' || $('#signupPassword').val() !== $('#confirmPassword').val()) {
-			$('#signupForm')[0].reportValidity();
-		} else {
-			$('#userInfo').hide();
-			$('#paymentInfo').show();
-		}
-	});
-
-	$('#prevBtn').click(function () {
-		$('#paymentInfo').hide();
-		$('#userInfo').show();
 	});
 });

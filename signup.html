@@ -12,6 +12,7 @@
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 
     <link rel="stylesheet" href="css/signup.css">
+    <link rel="stylesheet" href="css/modal.css">
     <!-- <link rel="stylesheet" href="css/common.css"> -->
 </head>
 
@@ -43,10 +44,8 @@
              
                 <div class="">
                     <label for="signupEmail" class="form-label">Email Address <span class="text-danger">*</span></label>
-                    <input type="email" placeholder="Enter email address" class="form-control" id="signupEmail" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required>
-                    <div class="invalid-feedback">
-                        Please enter a valid email
-                    </div>
+                    <input type="email" placeholder="Enter email address" class="form-control" id="signupEmail" required>
+                    
                 </div>
                
                 <div class="">
@@ -63,9 +62,9 @@
                         <option value="+33">+33</option>
                     </select>
                     <input type="number" inputmode="numeric" placeholder="Phone number" class="form-control bg-transparent" id="phoneNumber" style="border: none;">
-                    <div class="invalid-feedback">
-                        Please enter a valid phone number with exactly 10 digits
-                    </div>
+                </div>
+                <div class="invalid-feedback" style="font-size: 12px;">
+                    Please enter a phone number with exactly 10 digits
                 </div>
                 </div>
                 <div class="">
@@ -170,22 +169,29 @@
                  <div class="checkbox-container">
                     <label class="checkbox-label">
                         <input type="checkbox" id="agreeCheckbox">
-                        I agree to the &nbsp <a href="#"> Terms & Conditions</a>
+                        I agree to the &nbsp <a href="#" id="terms-link"> Terms & Conditions</a>
                     </label>
+                </div>
+                <div id="modal" class="terms-modal">
+                    <div class="terms-modal-content">
+                    <span class="close">&times;</span>
+                    <h1>Terms & Conditions</h1>
+                    <p>HR PAY's terms and conditions content goes here.</p>
+                    </div>
                 </div>
                 <button type="button" id="nextBtn" class="btn btn-gradient w-100" disabled>Next</button>
             </div>
             <div id="paymentInfo" style="display: none;">
                     <div class="grid-item">
                         <label for="cardNumber" class="form-label">Card Number <span class="text-danger">*</span></label>
-                        <input type="number" placeholder="Card number" class="form-control" id="cardNumber" required>
+                        <input type="number" name="card-number" placeholder="Card number" class="form-control" id="cardNumber" required>
                         <div class="invalid-feedback">
                             Please enter your card number
                         </div>
                     </div>
                     <div class="grid-item">
                         <label for="cardName" class="form-label">Name on Card <span class="text-danger">*</span></label>
-                        <input type="text" placeholder="Name on card" class="form-control" id="cardName" required>
+                        <input type="text" name="card-name" placeholder="Name on card" class="form-control" id="cardName" required>
                         <div class="invalid-feedback">
                             Please enter the name on your card
                         </div>
@@ -193,14 +199,14 @@
                
                     <div class="grid-item">
                         <label for="expiryDate" class="form-label">Expiry Date <span class="text-danger">*</span></label>
-                        <input type="month" placeholder="Month - YYYY" class="form-control" id="expiryDate" required>
+                        <input type="month" name="expiry-date" placeholder="Month - YYYY" class="form-control" id="expiryDate" required>
                         <div class="invalid-feedback">
                             Please enter the expiry date
                         </div>
                     </div>
                     <div class="grid-item">
                         <label for="cvv" class="form-label">CVV <span class="text-danger">*</span></label>
-                        <input type="number"  placeholder="CVV" class="form-control" id="cvv" max="999" required>
+                        <input name="cvv" type="number"  placeholder="CVV" class="form-control" id="cvv" max="999" required>
                         <div class="invalid-feedback">
                             Please enter the CVV
                         </div>
